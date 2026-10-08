@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Érica Silva · Estúdio de Beleza em Jaguariúna</title>
+<meta name="description" content="Estúdio de beleza em Jaguariúna. Limpeza de pele, maquiagem e massagem, com hora marcada e atendimento individual.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap">
+<style>
+:root{
+  --cream:#FAF2EC; --cream-alt:#F4E9E0; --ink:#23201C; --ink-soft:#5C554D;
+  --gold:#B08A4F; --olive:#524B3A; --line:#C9BCB0;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --corpo:'EB Garamond',Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:var(--corpo); font-size:19px; line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* ---------- header ---------- */
+.topo{
+  position:fixed; inset:0 0 auto 0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px 40px; background:transparent;
+  transition:background .35s ease, padding .35s ease, border-color .35s ease;
+  border-bottom:1px solid transparent;
+}
+.topo.solido{background:var(--cream); border-bottom-color:var(--line); padding:14px 40px}
+.topo .marca{
+  font-family:var(--display); font-size:19px; font-weight:300;
+  letter-spacing:.16em; text-transform:uppercase; color:#FAF2EC;
+  text-decoration:none; transition:color .35s ease;
+}
+.topo.solido .marca{color:var(--ink)}
+.menu{display:flex; gap:34px; list-style:none; margin:0; padding:0}
+.menu a{
+  font-family:var(--display); font-size:13px; letter-spacing:.18em;
+  text-transform:uppercase; text-decoration:none; color:#FAF2EC;
+  padding-bottom:3px; position:relative; transition:color .35s ease;
+}
+.topo.solido .menu a{color:var(--ink)}
+.menu a::after{
+  content:""; position:absolute; left:0; bottom:0; height:1px; width:100%;
+  background:currentColor; transform:scaleX(0); transform-origin:left;
+  transition:transform .32s ease;
+}
+.menu a:hover::after,.menu a:focus-visible::after{transform:scaleX(1)}
+@media(max-width:760px){ .menu{display:none} .topo{padding:18px 24px} }
+
+/* ---------- hero ---------- */
+.hero{position:relative; height:100svh; min-height:520px; overflow:hidden; display:grid; place-items:center}
+/* As duas fotos sao PROVISORIAS e vieram em 200x112 (a cota de geracao acabou
+   e o original de 1680x944 fica atras de URL assinada). Esticadas em tela cheia
+   elas aparecem pixeladas. Entao o desfoque aqui nao e enfeite: ele transforma
+   a baixa resolucao em campo de luz, que e leitura proposital em vez de defeito.
+   Ao trocar pelas fotos reais da Erica, REMOVER o filter e o scale. */
+.hero img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  object-position:center 55%; animation:kb 24s ease-out forwards;
+  filter:blur(22px) saturate(1.06); transform:scale(1.12); transform-origin:center;
+}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1.2)}}
+.hero::after,.banner::after{
+  content:""; position:absolute; inset:0; background:rgba(35,32,28,.42);
+}
+/* Grao fino por cima do campo desfocado: sem ele a area lisa denuncia o upscale. */
+.hero::before,.banner::before{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.5;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23r)' opacity='.26'/></svg>");
+}
+.hero-txt{position:relative; z-index:2; text-align:center; color:#FAF2EC; padding:0 24px}
+.hero-txt h1{
+  font-family:var(--display); font-weight:300; text-transform:uppercase;
+  font-size:clamp(38px,8vw,84px); line-height:1.25; margin:0;
+  letter-spacing:.14em; animation:abre 1.4s cubic-bezier(.22,.61,.36,1) .3s both;
+}
+@keyframes abre{from{letter-spacing:.26em;opacity:0}to{letter-spacing:.14em;opacity:1}}
+.hero-txt p{
+  font-size:20px; font-style:italic; margin:22px auto 0; max-width:30ch;
+  animation:abre 1.4s cubic-bezier(.22,.61,.36,1) .55s both;
+}
+.chevron{
+  position:absolute; bottom:38px; left:50%; translate:-50% 0; z-index:2;
+  color:#FAF2EC; font-size:26px; text-decoration:none; animation:desce 2.2s ease-in-out infinite;
+}
+@keyframes desce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+/* ---------- blocos ---------- */
+.faixa{padding:140px 40px}
+.faixa.alt{background:var(--cream-alt)}
+.limite{max-width:1180px; margin:0 auto}
+.centro{text-align:center}
+h2{
+  font-family:var(--display); font-weight:300; text-transform:uppercase;
+  font-size:clamp(28px,4.4vw,44px); line-height:1.25; letter-spacing:.14em; margin:0 0 28px;
+}
+.intro{max-width:62ch; margin:0 auto; color:var(--ink-soft)}
+@media(max-width:760px){ .faixa{padding:80px 24px} }
+
+/* ---------- servicos ---------- */
+.servicos{display:grid; gap:0; margin-top:70px; border-top:1px solid var(--line)}
+.servico{
+  display:grid; grid-template-columns:1fr auto; gap:24px; align-items:baseline;
+  padding:30px 4px; border-bottom:1px solid var(--line); text-align:left;
+}
+.servico h3{
+  font-family:var(--display); font-weight:400; text-transform:uppercase;
+  letter-spacing:.14em; font-size:22px; margin:0 0 8px;
+}
+.servico p{margin:0; color:var(--ink-soft); font-size:17px; max-width:52ch}
+.servico .valor{
+  font-family:var(--display); font-size:22px; letter-spacing:.1em;
+  white-space:nowrap; color:var(--ink);
+}
+@media(max-width:620px){
+  .servico{grid-template-columns:1fr; gap:10px}
+  .servico .valor{font-size:20px}
+}
+
+/* ---------- banner ---------- */
+.banner{position:relative; height:100svh; min-height:480px; display:grid; place-items:center; overflow:hidden}
+.banner img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:blur(20px) saturate(1.06); transform:scale(1.12);
+}
+.banner::after{background:rgba(35,32,28,.46)}
+.banner-txt{position:relative; z-index:2; text-align:center; color:#FAF2EC; padding:0 24px; max-width:720px}
+.banner-txt h2{margin-bottom:18px}
+.banner-txt p{font-style:italic; font-size:20px; margin:0 0 38px}
+
+/* ---------- botao pilula ---------- */
+.pilula{
+  display:inline-block; font-family:var(--display); font-size:13px;
+  letter-spacing:.18em; text-transform:uppercase; text-decoration:none;
+  padding:18px 52px; border:1px solid var(--ink); border-radius:999px;
+  color:var(--ink); background:transparent; transition:background .4s, color .4s;
+}
+.pilula:hover,.pilula:focus-visible{background:var(--ink); color:var(--cream)}
+.pilula.clara{border-color:#FAF2EC; color:#FAF2EC}
+.pilula.clara:hover,.pilula.clara:focus-visible{background:#FAF2EC; color:var(--ink)}
+
+/* ---------- contato ---------- */
+.contato p{margin:6px 0; color:var(--ink-soft)}
+.contato .destaque{
+  font-family:var(--display); font-size:22px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink); margin-bottom:26px;
+}
+.contato a.ouro{color:var(--gold); text-decoration:underline; text-underline-offset:4px}
+footer{
+  border-top:1px solid var(--line); padding:38px 40px; text-align:center;
+  font-size:15px; color:var(--ink-soft);
+}
+
+/* ---------- reveal ----------
+   O conteudo nasce VISIVEL. So esconde quando o JS confirma que vai animar,
+   marcando <html class="js">. Sem isso, qualquer falha do IntersectionObserver
+   deixa a pagina em branco, e foi o que ja aconteceu em 13 paginas da casa:
+   no navegador de dentro do Instagram o observador nao dispara e o telefone
+   simplesmente nao aparece. Visivel por padrao, animado por excecao. */
+.js .reveal{opacity:0; transform:translateY(16px); transition:opacity .8s ease-out, transform .8s ease-out}
+.js .reveal.visivel{opacity:1; transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+  .reveal{opacity:1; transform:none}
+}
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio">Érica Silva</a>
+  <nav><ul class="menu">
+    <li><a href="#estudio">O estúdio</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul></nav>
+</header>
+
+<main id="inicio">
+
+  <section class="hero">
+    <img src="assets/hero-studio.jpg" alt="Sala de atendimento do estúdio, com luz natural filtrada pela cortina">
+    <div class="hero-txt">
+      <h1>Érica Silva</h1>
+      <p>Estúdio de beleza em Jaguariúna, com hora marcada e atendimento individual.</p>
+    </div>
+    <a class="chevron" href="#estudio" aria-label="Ver mais">⌄</a>
+  </section>
+
+  <section class="faixa centro" id="estudio">
+    <div class="limite">
+      <h2 class="reveal">Um atendimento por vez</h2>
+      <p class="intro reveal">
+        Aqui não existe fila nem sala cheia. Cada horário é de uma pessoa só, com o tempo
+        que o cuidado pede. É assim que dá para olhar a pele com calma, entender o que ela
+        precisa e sair com o resultado que você veio buscar.
+      </p>
+    </div>
+  </section>
+
+  <section class="banner">
+    <img src="assets/detalhe-pinceis.jpg" alt="Pincéis de maquiagem sobre bancada de pedra clara">
+    <div class="banner-txt">
+      <h2 class="reveal">O preparo faz a diferença</h2>
+      <p class="reveal">Pele tratada antes, maquiagem que dura o dia inteiro depois.</p>
+      <a class="pilula clara reveal" href="#contato">Agendar horário</a>
+    </div>
+  </section>
+
+  <section class="faixa alt centro" id="servicos">
+    <div class="limite">
+      <h2 class="reveal">Serviços</h2>
+      <p class="intro reveal">
+        Três cuidados, cada um com hora marcada. Se quiser combinar mais de um no mesmo dia,
+        é só dizer na hora de agendar.
+      </p>
+
+      <div class="servicos">
+        <!-- PRECOS: trocar o X pelo valor real da Erica antes de publicar -->
+        <article class="servico reveal">
+          <div>
+            <h3>Limpeza de pele</h3>
+            <p>Higienização profunda, extração e finalização calma, respeitando o tipo da sua pele.</p>
+          </div>
+          <span class="valor">R$ X</span>
+        </article>
+
+        <article class="servico reveal">
+          <div>
+            <h3>Maquiagem</h3>
+            <p>Do social discreto ao dia da festa. Feita em cima da sua pele e do seu rosto, não de um padrão.</p>
+          </div>
+          <span class="valor">R$ X</span>
+        </article>
+
+        <article class="servico reveal">
+          <div>
+            <h3>Massagem</h3>
+            <p>Sessão para soltar a tensão do corpo, em sala silenciosa e com pressão ajustada a você.</p>
+          </div>
+          <span class="valor">R$ X</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="faixa centro contato" id="contato">
+    <div class="limite">
+      <h2 class="reveal">Agendar</h2>
+      <p class="destaque reveal">Jaguariúna · São Paulo</p>
+      <p class="reveal">O horário é confirmado pelo WhatsApp.</p>
+      <p class="reveal"><a class="ouro" href="https://wa.me/5515988232418">(15) 98823-2418</a></p>
+      <p class="reveal" style="margin-top:34px">
+        <a class="pilula" href="https://wa.me/5515988232418">Falar com a Érica</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>Érica Silva · Estúdio de Beleza · Jaguariúna, SP</footer>
+
+<script>
+(function(){
+  var raiz = document.documentElement;
+  var alvos0 = document.querySelectorAll('.reveal');
+  var mostrarTudo = function(){
+    for (var i = 0; i < alvos0.length; i++) alvos0[i].classList.add('visivel');
+  };
+  // So escondo se o observador existir. E mesmo existindo, uma rede de seguranca
+  // de 2,5s revela tudo: pagina em branco e pior que animacao perdida.
+  if ('IntersectionObserver' in window) {
+    raiz.classList.add('js');
+    setTimeout(mostrarTudo, 2500);
+  }
+
+  var topo = document.getElementById('topo');
+  var marcar = function(){ topo.classList.toggle('solido', window.scrollY > 80); };
+  marcar();
+  window.addEventListener('scroll', marcar, {passive:true});
+
+  var alvos = alvos0;
+  if (!('IntersectionObserver' in window)) { mostrarTudo(); return; }
+  var obs = new IntersectionObserver(function(entradas){
+    entradas.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var irmaos = Array.prototype.slice.call(en.target.parentNode.querySelectorAll('.reveal'));
+      var i = Math.min(irmaos.indexOf(en.target), 2);   // stagger so ate 3
+      en.target.style.transitionDelay = (i * 90) + 'ms';
+      en.target.classList.add('visivel');
+      obs.unobserve(en.target);
+    });
+  }, {threshold:.18});
+  for (var k = 0; k < alvos.length; k++) obs.observe(alvos[k]);
+})();
+</script>
+</body>
+</html>

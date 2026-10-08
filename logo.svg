@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 86" role="img" aria-label="Érica Silva, estúdio de beleza">
+  <!-- Logotipo tipografico. Dialeto Hospitalidade: a mesma serifada do site,
+       maior e com tracking .16em. Sem icone, sem script, sem simbolo. -->
+  <text x="210" y="38" text-anchor="middle"
+        font-family="'Cormorant Garamond', 'EB Garamond', Georgia, serif"
+        font-size="34" font-weight="300" letter-spacing="5.4" fill="#23201C">ÉRICA SILVA</text>
+  <line x1="150" y1="54" x2="270" y2="54" stroke="#B08A4F" stroke-width="1"/>
+  <text x="210" y="74" text-anchor="middle"
+        font-family="'Cormorant Garamond', 'EB Garamond', Georgia, serif"
+        font-size="12" font-weight="400" letter-spacing="4.2" fill="#5C554D">ESTÚDIO DE BELEZA</text>
+</svg>
